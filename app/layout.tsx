@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   title: "SAAVE Arquitectos - Sistema de Cotización",
   description: "Materializar tus sueños a través de soluciones que agreguen valor a tu inversión",
   generator: "v0.dev",
+  icons: {
+    icon: "/logo-web.png",
+    shortcut: "/logo-web.png",
+    apple: "/logo-web.png",
+  },
 }
 
 export default function RootLayout({
