@@ -32,12 +32,15 @@ export const generateCompleteQuotation = (
   const materialLineCost = getMaterialLineCost(responses.linea_materiales || "media")
   const costoConstruccion = totalArea * materialLineCost
 
-  const subtotalSinIva = totalDesignAndLicensingCost + costoConstruccion
+  // Nuevo criterio: Total y Subtotal solo consideran Etapa I + Etapa II (diseño y licencias)
+  const subtotalSinIva = totalDesignAndLicensingCost
   const ivaAmount = subtotalSinIva * IVA_RATE
   const totalCost = subtotalSinIva + ivaAmount
 
   // Generate payment breakdown
-  const paymentBreakdown = calculatePaymentBreakdown(totalCost)
+  // La forma de pago se calcula únicamente sobre el valor de DISEÑO (Etapas I + II) con IVA
+  const designWithIva = totalDesignAndLicensingCost * (1 + IVA_RATE)
+  const paymentBreakdown = calculatePaymentBreakdown(designWithIva)
 
   // Generate area breakdown text
   const areaBreakdownText = generateAreaBreakdownText(areaBreakdown)
@@ -234,7 +237,7 @@ const generateQuotationText = (
 
 💵 ${convertNumberToSpanishText(totalCost)}
 
-💳 FORMA DE PAGO:
+💳 FORMA DE PAGO (sobre diseño con IVA):
 • Primer pago (40%): $${paymentBreakdown.firstPayment.toLocaleString("es-CO")}
 • Segundo pago (50%): $${paymentBreakdown.secondPayment.toLocaleString("es-CO")}
 • Tercer pago (10%): $${paymentBreakdown.thirdPayment.toLocaleString("es-CO")}
@@ -243,7 +246,7 @@ const generateQuotationText = (
 Paga el primer 40% en 30 días y obtén 10% de descuento.
 
 💰 Primer pago con descuento: $${paymentBreakdown.discountedFirstPayment.toLocaleString("es-CO")}
-🏆 Total con descuento: $${paymentBreakdown.totalWithDiscount.toLocaleString("es-CO")}
+🏆 Total con descuento (solo diseño): $${paymentBreakdown.totalWithDiscount.toLocaleString("es-CO")}
 
 ⏱️ DURACIÓN DEL PROYECTO: ${PROJECT_DURATION_DAYS} días calendario (4 meses)`
 }
