@@ -2,26 +2,435 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    /* Updated theme colors for SAAVE Arquitectos with terracotta/earth tones */
+    --background: 28 25% 97%;
+    --foreground: 20 14% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 4%;
+    --primary: 15 75% 28%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 28 25% 95%;
+    --secondary-foreground: 20 14% 4%;
+    --muted: 28 25% 95%;
+    --muted-foreground: 25 5% 45%;
+    --accent: 15 75% 28%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 28 25% 89%;
+    --input: 28 25% 89%;
+    --ring: 15 75% 28%;
+    --chart-1: 15 75% 28%;
+    --chart-2: 25 65% 45%;
+    --chart-3: 35 55% 35%;
+    --chart-4: 45 70% 50%;
+    --chart-5: 20 80% 40%;
+    --radius: 0.75rem;
+    --sidebar-background: 28 25% 98%;
+    --sidebar-foreground: 25 5% 26%;
+    --sidebar-primary: 15 75% 28%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 28 25% 95%;
+    --sidebar-accent-foreground: 15 75% 28%;
+    --sidebar-border: 28 25% 91%;
+    --sidebar-ring: 15 75% 28%;
+  }
+
+  .dark {
+    --background: 20 14% 4%;
+    --foreground: 0 0% 98%;
+    --card: 20 14% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 20 14% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 15 75% 45%;
+    --primary-foreground: 20 14% 4%;
+    --secondary: 25 5% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 25 5% 15%;
+    --muted-foreground: 25 5% 64%;
+    --accent: 15 75% 45%;
+    --accent-foreground: 20 14% 4%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 25 5% 15%;
+    --input: 25 5% 15%;
+    --ring: 15 75% 45%;
+    --chart-1: 15 75% 45%;
+    --chart-2: 25 65% 55%;
+    --chart-3: 35 55% 45%;
+    --chart-4: 45 70% 60%;
+    --chart-5: 20 80% 50%;
+    --sidebar-background: 25 5% 10%;
+    --sidebar-foreground: 28 25% 96%;
+    --sidebar-primary: 15 75% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 25 5% 16%;
+    --sidebar-accent-foreground: 28 25% 96%;
+    --sidebar-border: 25 5% 16%;
+    --sidebar-ring: 15 75% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Estilos para botones negros con fondo gris */
+  .btn-black {
+    @apply bg-gray-900 text-white hover:bg-gray-800 transition-all duration-300;
+  }
+  
+  .btn-black-outline {
+    @apply bg-gray-100 text-gray-900 hover:bg-gray-200 transition-all duration-300;
+  }
+  
+  /* Footer con color personalizado */
+  .footer-black {
+    background-color: #2A2E30;
+    @apply text-white;
+  }
+  
+  /* Sección CTA con color personalizado */
+  .cta-custom {
+    background-color: #2A2E30;
+    @apply text-white;
+  }
+  
+  /* Carrusel con color personalizado */
+  .carousel-custom {
+    background-color: #2A2E30;
+    @apply text-white;
+  }
+  
+  /* Estilos mejorados para el carrusel */
+  .carousel-slide {
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .carousel-slide-enter {
+    opacity: 0;
+    transform: scale(1.05) translateY(20px);
+  }
+  
+  .carousel-slide-enter-active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  
+  .carousel-slide-exit {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  
+  .carousel-slide-exit-active {
+    opacity: 0;
+    transform: scale(0.95) translateY(-20px);
+  }
+  
+  /* Animación de pulso para indicadores activos */
+  @keyframes carousel-pulse {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.1);
+    }
+  }
+  
+  .carousel-indicator-active {
+    animation: carousel-pulse 2s ease-in-out infinite;
+  }
+  
+  /* Efecto de hover mejorado para botones de navegación */
+  .carousel-nav-button {
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .carousel-nav-button:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Efecto de desvanecimiento suave para el contenido del slide */
+  .carousel-content {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .carousel-content-enter {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .carousel-content-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Estilo para el botón de play/pause */
+  .carousel-play-button {
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .carousel-play-button:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Efecto de gradiente mejorado */
+  .carousel-overlay {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.1) 30%,
+      rgba(0, 0, 0, 0.3) 60%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+  }
+  
+  /* Mejoras de responsividad para móviles */
+  @media (max-width: 640px) {
+    .carousel-nav-button {
+      opacity: 1 !important;
+      background-color: rgba(255, 255, 255, 0.9) !important;
+    }
+    
+    .carousel-play-button {
+      width: 2rem;
+      height: 2rem;
+    }
+    
+    .carousel-content h3 {
+      font-size: 1.125rem;
+      line-height: 1.5;
+    }
+    
+    .carousel-content p {
+      font-size: 0.875rem;
+      line-height: 1.4;
+    }
+  }
+  
+  /* Mejoras para tablets */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .carousel-nav-button {
+      opacity: 0;
+    }
+    
+    .group:hover .carousel-nav-button {
+      opacity: 1;
+    }
+  }
+  
+  /* Animación de entrada para el carrusel */
+  @keyframes carousel-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .carousel-container {
+    animation: carousel-fade-in 0.8s ease-out;
+  }
+
+  /* Progress bar (indeterminate) for downloads */
+  @keyframes progress-indeterminate {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(0%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .progress-indeterminate {
+    animation: progress-indeterminate 1.2s ease-in-out infinite;
+  }
+
+  /* Simple confetti burst */
+  @keyframes confetti-pop {
+    0% { transform: translateY(0) scale(0.6); opacity: 0; }
+    40% { opacity: 1; }
+    100% { transform: translateY(-40px) scale(1); opacity: 0; }
+  }
+
+  .confetti > span {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    animation: confetti-pop 900ms ease-out forwards;
+  }
+  
+  /* Animaciones de scroll */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .scroll-reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .scroll-reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .scroll-reveal-scale {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .scroll-reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .scroll-reveal-rotate {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .scroll-reveal-rotate.visible {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  
+  /* Efectos de parallax */
+  .parallax-bg {
+    transform: translateY(var(--parallax-offset, 0px));
+  }
+  
+  .parallax-slow {
+    transform: translateY(calc(var(--parallax-offset, 0px) * 0.3));
+  }
+  
+  .parallax-fast {
+    transform: translateY(calc(var(--parallax-offset, 0px) * 1.2));
+  }
+  
+  /* Animaciones de texto */
+  .text-reveal {
+    overflow: hidden;
+  }
+  
+  .text-reveal span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .text-reveal.visible span {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Animaciones de números */
+  .number-reveal {
+    font-variant-numeric: tabular-nums;
+  }
+  
+  /* Efectos de hover mejorados */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: none;
+    box-shadow: none;
+    border-radius: inherit;
+  }
+  
+  /* Animaciones de entrada escalonadas */
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .stagger-children.visible > *:nth-child(1) { transition-delay: 0.1s; }
+  .stagger-children.visible > *:nth-child(2) { transition-delay: 0.2s; }
+  .stagger-children.visible > *:nth-child(3) { transition-delay: 0.3s; }
+  .stagger-children.visible > *:nth-child(4) { transition-delay: 0.4s; }
+  .stagger-children.visible > *:nth-child(5) { transition-delay: 0.5s; }
+  
+  .stagger-children.visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Efectos de glassmorphism */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Animaciones de pulso suaves */
+  @keyframes gentle-pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.02);
+    }
+  }
+  
+  .gentle-pulse {
+    animation: gentle-pulse 3s ease-in-out infinite;
   }
 }
