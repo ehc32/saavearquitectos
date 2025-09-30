@@ -152,6 +152,40 @@ export default function QuotationCard({ data }: QuotationCardProps) {
             </div>
           </div>
         </div>
+        <div className="rounded-xl border border-gray-200">
+          <div className="px-4 py-2.5 border-b border-gray-200 bg-gray-50 text-xs font-semibold text-gray-700">
+          DURACIÓN DEL PROYECTO
+          </div>
+          <div className="p-4 space-y-2 text-sm">
+            <div className="text-gray-600">120 días calendario (4 meses)</div>
+          </div>
+        </div>
+        <div className="rounded-xl border border-gray-200">
+          <div className="px-4 py-2.5 border-b border-gray-200 bg-gray-50">
+            <div className="text-sm font-semibold text-gray-900">📋 Inversión de Construcción:</div>
+          </div>
+          <div className="p-4 space-y-2 text-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-gray-700">• Línea de materiales:</span>
+              <span className="font-semibold text-gray-900">{lineaMateriales || (data as any).linea_materiales}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-gray-700">• Costo por m²:</span>
+              <span className="font-semibold text-gray-900">{formatCOP(costoPorM2)}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-gray-700">• Total construcción:</span>
+              <span className="font-semibold text-gray-900">
+                {data.m2_formatted || `${data.area_total.toLocaleString("es-CO")} m²`} × {formatCOP(costoPorM2)} = {formatCOP(costoConstruccion)}
+              </span>
+            </div>
+            <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+              <p className="text-xs text-gray-700">
+                <strong>NOTA:</strong> Es un valor estimativo y es independiente a los costos de los diseños.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
