@@ -82,10 +82,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </main>
-
-      {/* FOOTER - compacto, centrado, logo y nombre */}
-      <footer className="border-t border-gray-200 bg-white py-6">
+        <footer className="border-t border-gray-200 bg-white py-6">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center space-y-3">
           <Image
@@ -93,20 +90,15 @@ export default function Home() {
   alt="SAAVE Arquitectos Logo"
   width={500}
   height={500}
-  className="object-contain h-24 w-24 md:h-[150px] md:w-[150px]"
+  className="object-contain h-24 w-24 md:h-[200px] md:w-[200px]"
 />
-
-
-            <span className="text-2xl font-bold font-serif text-black tracking-wide text-center">
-              SAAVE Arquitectos
-            </span>
-
-            <p className="text-gray-600 text-center text-sm">
-              © {new Date().getFullYear()} SAAVE Arquitectos · Materializando sueños arquitectónicos
-            </p>
           </div>
         </div>
       </footer>
+      </main>
+      
+      {/* FOOTER - compacto, centrado, logo y nombre */}
+      
     </div>
   )
 }
