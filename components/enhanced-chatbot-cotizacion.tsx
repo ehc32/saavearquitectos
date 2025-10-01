@@ -416,28 +416,72 @@ const EnhancedChatbotCotizacion = ({ onBack }: ChatbotProps) => {
       className="flex flex-col h-screen bg-white relative"
       style={{ fontFamily: "'Inter', system-ui, -apple-system, sans-serif" }}
     >
-      {/* Loading Overlay */}
+           {/* Loading Overlay */}
       {isGenerating && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-xs w-full mx-4 text-center shadow-2xl">
-            <div className="mb-4">
-              <Loader2 className="w-12 h-12 text-gray-800 animate-spin mx-auto" />
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 max-w-sm w-full mx-4 text-center shadow-2xl ring-1 ring-black/5">
+            <div className="mb-5 flex flex-col items-center gap-3">
+              <Loader2 className="w-10 h-10 text-gray-900 animate-spin" />
+              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div className="h-full w-1/2 bg-gray-900 progress-indeterminate" />
+              </div>
             </div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-1">Generando tu cotización</h3>
-            <p className="text-gray-600 text-sm">Estamos creando tu documento PDF...</p>
+            <h3 className="text-lg font-semibold text-gray-900 mb-1">Generando tu cotización…</h3>
+            <p className="text-gray-600 text-sm">Preparando PDF y activos. Esto puede tardar unos segundos.</p>
           </div>
         </div>
       )}
 
       {/* Success Overlay */}
       {showSuccess && (
-        <div className="fixed inset-0 bg-green-600 bg-opacity-90 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-xs w-full mx-4 text-center shadow-2xl">
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="relative bg-white rounded-2xl p-6 sm:p-8 max-w-sm w-full mx-4 text-center shadow-2xl ring-1 ring-black/5">
             <div className="mb-4">
-              <Check className="w-12 h-12 text-green-600 mx-auto animate-bounce" />
+              <Check className="w-12 h-12 text-green-600 mx-auto" />
             </div>
-            <h2 className="text-lg font-bold text-gray-800 mb-1">¡Descarga Exitosa!</h2>
+            <h2 className="text-lg font-bold text-gray-900 mb-1">¡Descarga exitosa!</h2>
             <p className="text-gray-600 text-sm">Tu cotización PDF ha sido generada correctamente.</p>
+            <div className="confetti" aria-hidden>
+              <span style={{left:'10%', background:'#16a34a', animationDelay:'0ms'}}></span>
+              <span style={{left:'30%', background:'#22c55e', animationDelay:'100ms'}}></span>
+              <span style={{left:'50%', background:'#84cc16', animationDelay:'200ms'}}></span>
+              <span style={{left:'70%', background:'#16a34a', animationDelay:'300ms'}}></span>
+              <span style={{left:'90%', background:'#4ade80', animationDelay:'400ms'}}></span>
+            </div>
+          </div>
+        </div>
+      )}      {/* Loading Overlay */}
+      {isGenerating && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 max-w-sm w-full mx-4 text-center shadow-2xl ring-1 ring-black/5">
+            <div className="mb-5 flex flex-col items-center gap-3">
+              <Loader2 className="w-10 h-10 text-gray-900 animate-spin" />
+              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div className="h-full w-1/2 bg-gray-900 progress-indeterminate" />
+              </div>
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-1">Generando tu cotización…</h3>
+            <p className="text-gray-600 text-sm">Preparando PDF y activos. Esto puede tardar unos segundos.</p>
+          </div>
+        </div>
+      )}
+
+      {/* Success Overlay */}
+      {showSuccess && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="relative bg-white rounded-2xl p-6 sm:p-8 max-w-sm w-full mx-4 text-center shadow-2xl ring-1 ring-black/5">
+            <div className="mb-4">
+              <Check className="w-12 h-12 text-green-600 mx-auto" />
+            </div>
+            <h2 className="text-lg font-bold text-gray-900 mb-1">¡Descarga exitosa!</h2>
+            <p className="text-gray-600 text-sm">Tu cotización PDF ha sido generada correctamente.</p>
+            <div className="confetti" aria-hidden>
+              <span style={{left:'10%', background:'#16a34a', animationDelay:'0ms'}}></span>
+              <span style={{left:'30%', background:'#22c55e', animationDelay:'100ms'}}></span>
+              <span style={{left:'50%', background:'#84cc16', animationDelay:'200ms'}}></span>
+              <span style={{left:'70%', background:'#16a34a', animationDelay:'300ms'}}></span>
+              <span style={{left:'90%', background:'#4ade80', animationDelay:'400ms'}}></span>
+            </div>
           </div>
         </div>
       )}
