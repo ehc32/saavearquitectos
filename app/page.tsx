@@ -1,101 +1,104 @@
-import Image from "next/image";
+"use client"
+
+import { useState } from "react"
+import EnhancedChatbotCotizacion from "@/components/enhanced-chatbot-cotizacion"
+import { ArrowRight, Building2, Calculator, Users } from "lucide-react"
+import Image from "next/image"
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [showChatbot, setShowChatbot] = useState(false)
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  if (showChatbot) {
+    return <EnhancedChatbotCotizacion onBack={() => setShowChatbot(false)} />
+  }
+
+  return (
+    <div className="min-h-screen bg-white text-black">
+      <main>
+        {/* HERO - compacto y centrado */}
+        <section className="relative py-8">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl font-bold font-serif mb-3 leading-tight">
+                <span className="text-black">SAAVE</span>
+                <br />
+                <span className="text-black">Arquitectos</span>
+              </h1>
+
+              <p className="text-lg md:text-xl text-black mb-2 max-w-2xl mx-auto leading-snug">
+                <span className="font-semibold">MATERIALIZAR TUS SUEÑOS</span> a través de{" "}
+                <span className="font-semibold">SOLUCIONES</span> que{" "}
+                <span className="font-semibold">AGREGUEN VALOR A TU INVERSIÓN</span>
+              </p>
+
+              <p className="text-sm text-gray-600 mb-4 max-w-xl mx-auto">
+                Obtén una cotización detallada y personalizada para tu proyecto arquitectónico con nuestro sistema inteligente de estimación de costos.
+              </p>
+
+              <button
+                onClick={() => setShowChatbot(true)}
+                className="inline-flex items-center gap-2 bg-[#B22222] text-white px-6 py-3 rounded-full text-base font-semibold hover:bg-[#8b1a1a] transition-all duration-150"
+              >
+                Iniciar Cotización
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* FEATURES - compactas y en la misma vista */}
+        <section className="py-8 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              <div className="text-center p-4 compact-card">
+                <div className="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <Calculator className="h-6 w-6 text-gray-800" />
+                </div>
+                <h3 className="text-lg font-semibold mb-1 text-black">Cotización Inteligente</h3>
+                <p className="text-sm text-gray-600">
+                  Sistema automatizado que calcula costos precisos basados en especificaciones detalladas de tu proyecto.
+                </p>
+              </div>
+
+              <div className="text-center p-4 compact-card">
+                <div className="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <Building2 className="h-6 w-6 text-gray-800" />
+                </div>
+                <h3 className="text-lg font-semibold mb-1 text-black">Diseño Personalizado</h3>
+                <p className="text-sm text-gray-600">
+                  Soluciones arquitectónicas únicas adaptadas a tus necesidades, presupuesto y estilo de vida.
+                </p>
+              </div>
+
+              <div className="text-center p-4 compact-card">
+                <div className="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <Users className="h-6 w-6 text-gray-800" />
+                </div>
+                <h3 className="text-lg font-semibold mb-1 text-black">Acompañamiento Integral</h3>
+                <p className="text-sm text-gray-600">
+                  Te acompañamos desde la conceptualización hasta la entrega final de tu proyecto.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer className="border-t border-gray-200 bg-white py-6">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col items-center justify-center space-y-3">
+          <Image
+  src="/logo-2.png"
+  alt="SAAVE Arquitectos Logo"
+  width={500}
+  height={500}
+  className="object-contain h-24 w-24 md:h-[200px] md:w-[200px]"
+/>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
       </footer>
+      </main>
+      
+      {/* FOOTER - compacto, centrado, logo y nombre */}
+      
     </div>
-  );
+  )
 }
