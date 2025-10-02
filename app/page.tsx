@@ -26,13 +26,14 @@ export default function Home() {
               </h1>
 
               <p className="text-lg md:text-xl text-black mb-2 max-w-2xl mx-auto leading-snug">
-                <span className="font-semibold">MATERIALIZAR TUS SUEÑOS</span> a través de{" "}
+                <span className="font-semibold">MATERIALIZAMOS TUS SUEÑOS</span> a través de{" "}
                 <span className="font-semibold">SOLUCIONES</span> que{" "}
                 <span className="font-semibold">AGREGUEN VALOR A TU INVERSIÓN</span>
               </p>
 
               <p className="text-sm text-gray-600 mb-4 max-w-xl mx-auto">
-                Obtén una cotización detallada y personalizada para tu proyecto arquitectónico con nuestro sistema inteligente de estimación de costos.
+                Obtén una cotización detallada y personalizada para tu proyecto arquitectónico con nuestro sistema
+                inteligente de estimación de costos.
               </p>
 
               <button
@@ -56,7 +57,8 @@ export default function Home() {
                 </div>
                 <h3 className="text-lg font-semibold mb-1 text-black">Cotización Inteligente</h3>
                 <p className="text-sm text-gray-600">
-                  Sistema automatizado que calcula costos precisos basados en especificaciones detalladas de tu proyecto.
+                  Sistema automatizado que calcula costos precisos basados en especificaciones detalladas de tu
+                  proyecto.
                 </p>
               </div>
 
@@ -82,23 +84,22 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* FOOTER - compacto, centrado, logo y nombre */}
         <footer className="border-t border-gray-200 bg-white py-6">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center justify-center space-y-3">
-          <Image
-  src="/logo-2.png"
-  alt="SAAVE Arquitectos Logo"
-  width={500}
-  height={500}
-  className="object-contain h-24 w-24 md:h-[200px] md:w-[200px]"
-/>
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col items-center justify-center space-y-3">
+              <Image
+                src="/logo-saave.png"
+                alt="SAAVE Arquitectos Logo"
+                width={200}
+                height={800}
+                className="object-contain h-32 w-auto md:h-32"
+              />
+            </div>
           </div>
-        </div>
-      </footer>
+        </footer>
       </main>
-      
-      {/* FOOTER - compacto, centrado, logo y nombre */}
-      
     </div>
   )
 }
